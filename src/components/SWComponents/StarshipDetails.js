@@ -1,7 +1,7 @@
 import React from "react";
 import ItemDetails from "../ItemList/ItemDetails/ItemDetails";
-import {Record} from "../ItemList/ItemDetails/DetailsComponent/DetailsComponent";
 import {withSwapService} from "../../hoc";
+import Record from "../ItemList/ItemDetails/DetailsComponent/Record/Record";
 
 const StarshipDetails = (props) => {
     return (
