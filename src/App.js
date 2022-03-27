@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import {SwapServiceProvider} from "./context";
+import Header from "./components/Header/Header";
+import SwapService from "./services/SwapiServices";
+import DummySwapService from "./services/DummySwapService";
+import RandomPlanet from "./components/RandomPlanet/RandomPlanet";
+import {PeoplePage, PlanetPage, StarshipPage} from "./pages";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [swapServices, setSwapServices] = useState(new SwapService());
+
+    const onServiceChange = () => {
+        setSwapServices((swap) => {
+            const Services = swap instanceof SwapService
+                ? DummySwapService : SwapService
+           return new Services;
+        })
+    }
+
+    return (
+        <SwapServiceProvider value={swapServices}>
+            <div className='container'>
+                <Header onServiceChange={onServiceChange} />
+                <RandomPlanet/>
+                <PeoplePage/>
+                <PlanetPage/>
+                <StarshipPage/>
+            </div>
+        </SwapServiceProvider>
+    );
+};
 
 export default App;

@@ -1,0 +1,21 @@
+.item-details {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 1rem;
+  margin-bottom: 30px;
+}
+
+.item-details .person-image {
+  width: 30%;
+  height: 30%;
+  border-radius: 10px;
+}
+
+.item-details .list-group-item {
+  padding: .25rem;
+}
+
+.item-details .list-group-item .term{
+  margin-right: .5rem;
+}
